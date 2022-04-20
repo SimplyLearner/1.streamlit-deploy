@@ -15,8 +15,6 @@ dog_breeds_category_path = os.path.join(current_path, 'models/dog_breeds_categor
 predictor_model = load_model(r'models/dogbreed.h5')
 with open(dog_breeds_category_path, 'rb') as handle:
     dog_breeds = pickle.load(handle)
-
-# feature_extractor = load_model(r'models\feature_extractor.h5')
 from tensorflow.keras.applications.resnet_v2 import ResNet50V2 , preprocess_input as resnet_preprocess
 from tensorflow.keras.applications.densenet import DenseNet121, preprocess_input as densenet_preprocess
 from tensorflow.keras.layers import concatenate
@@ -49,7 +47,7 @@ def predictor(img_path): # here image is file name
     prediction = predictor_model.predict(features)*100
     prediction = pd.DataFrame(np.round(prediction,1),columns = dog_breeds).transpose()
     prediction.columns = ['values']
-    prediction  = prediction.nlargest(5, 'values')
+    prediction  = prediction.nlargest(5, 'values') # Top 5 predictions
     prediction = prediction.reset_index()
     prediction.columns = ['name', 'values']
     return(prediction)

@@ -42,11 +42,7 @@ feature_extractor = Model(inputs = input_layer, outputs = merge)
 
 print('model loaded')
 def predictor(img_path): # here image is file name 
-    # base_path = os.path.join(current_path, 'models\images\cache')
-    # path = os.path.join(base_path,image_name)
     img = load_img(img_path, target_size=(331,331))
-    # print(path)
-    # img = cv2.resize(img,(331,331))
     img = img_to_array(img)
     img = np.expand_dims(img,axis = 0)
     features = feature_extractor.predict(img)
@@ -59,12 +55,3 @@ def predictor(img_path): # here image is file name
     return(prediction)
 
     
-
-
-# print(predictor('samoyed_puppy_dog_pictures.jpg'))
-
-
-
-# img = cv2.imread(r'C:\Users\Abhishek\Desktop\dog_breed classifier\models\images\sample.jpg')
-# img = cv2.resize(img,(331,331))
-# print(img.shape)

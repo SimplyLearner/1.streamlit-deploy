@@ -17,11 +17,11 @@ with open(dog_breeds_category_path, 'rb') as handle:
     dog_breeds = pickle.load(handle)
 
 # feature_extractor = load_model(r'models\feature_extractor.h5')
-from keras.applications.resnet_v2 import ResNet50V2 , preprocess_input as resnet_preprocess
-from keras.applications.densenet import DenseNet121, preprocess_input as densenet_preprocess
-from keras.layers.merge import concatenate
-from keras.layers import BatchNormalization, Dense, GlobalAveragePooling2D, Lambda, Dropout, InputLayer, Input
-from keras.models import Model
+from tensorflow.keras.applications.resnet_v2 import ResNet50V2 , preprocess_input as resnet_preprocess
+from tensorflow.keras.applications.densenet import DenseNet121, preprocess_input as densenet_preprocess
+from tensorflow.keras.layers import concatenate
+from tensorflow.keras.layers import BatchNormalization, Dense, GlobalAveragePooling2D, Lambda, Dropout, InputLayer, Input
+from tensorflow.keras.models import Model
 
 input_shape = (331,331,3)
 input_layer = Input(shape=input_shape)
